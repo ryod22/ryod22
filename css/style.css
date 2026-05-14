@@ -1,6 +1,6 @@
 :root {
-    --primary: #7000ff;
-    --primary-glow: rgba(112, 0, 255, 0.3); /* Softened from 0.5 */
+    --primary: #ff007f; /* Rose / Pink */
+    --primary-glow: rgba(255, 0, 127, 0.3); 
     --secondary: #00f2ea;
     --accent: #00d4ff;
     --accent-glow: rgba(0, 212, 255, 0.5);
@@ -202,7 +202,7 @@ body.overlay-open .top-nav {
 }
 
 .payment-trigger {
-    background: rgba(112, 0, 255, 0.1);
+    background: rgba(255, 0, 127, 0.1);
     border: 1px solid var(--primary);
     padding: 10px 20px;
     border-radius: 12px;
@@ -284,7 +284,7 @@ body.overlay-open .top-nav {
 
 header {
     text-align: center;
-    margin-bottom: 80px;
+    margin-bottom: 40px; /* Reduced from 80px to move panels up */
 }
 
 h1 {
@@ -365,7 +365,7 @@ h1 {
     display: block;
     width: 100%;
     padding: 12px;
-    background: rgba(112, 0, 255, 0.1);
+    background: rgba(255, 0, 127, 0.1);
     border: 1px solid var(--primary);
     color: #fff;
     text-decoration: none;
@@ -476,9 +476,9 @@ h1 {
 }
 
 .method.active {
-    background: rgba(112, 0, 255, 0.1);
+    background: rgba(255, 0, 127, 0.1);
     border-color: var(--primary);
-    box-shadow: inset 0 0 15px rgba(112, 0, 255, 0.1);
+    box-shadow: inset 0 0 15px rgba(255, 0, 127, 0.1);
 }
 
 .method-label {
@@ -522,24 +522,31 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(5, 5, 5, 0.4);
-    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(15px);
     z-index: 10000;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 20px;
+    justify-content: flex-start;
+    padding: 30px 20px; /* Reduced from 60px to move content up */
+    overflow-y: auto;
 }
 
 .overlay-content {
-    max-width: 900px;
+    max-width: 720px; /* Reduced to align with two 350px cards + 20px gap */
     width: 100%;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px; /* Reduced to move cards up */
 }
 
 .back-btn {
-    position: fixed;
-    top: 40px;
+    align-self: flex-start;
+    margin-left: 0; /* Remove margin to align exactly with card edge */
+    margin-bottom: 0px;
     color: #fff;
     cursor: pointer;
     font-weight: 800;
@@ -574,13 +581,15 @@ body:not(.overlay-open) .back-btn {
 
 .plans-grid-inner {
     display: flex;
+    flex-direction: row; /* Explicitly set row */
     flex-wrap: wrap;
     justify-content: center;
-    gap: 30px;
+    gap: 20px; /* Reduced gap */
+    width: 100%;
 }
 
 .plan-card {
-    max-width: 400px;
+    max-width: 350px; /* Matched closer to main panel feel */
     width: 100%;
     background: rgba(10, 10, 15, 0.9);
     border: 1px solid rgba(112, 0, 255, 0.2);
@@ -615,7 +624,7 @@ body:not(.overlay-open) .back-btn {
 .btn-plan {
     width: 100%;
     padding: 14px;
-    background: rgba(112, 0, 255, 0.1);
+    background: rgba(255, 0, 127, 0.1);
     border: 2px solid var(--primary);
     color: #fff;
     border-radius: 12px;
