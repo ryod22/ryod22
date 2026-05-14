@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RYOD X66</title>
+    <link rel="shortcut icon" href="IMAGE/RY.png">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Modular Assets -->
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
+</head>
+<body>
+
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Falling Background Logos -->
+    <div class="bg-logos">
+        <img src="IMAGE/RY.png" class="falling-logo" style="left: 10%; animation-delay: 0s; width: 80px;">
+        <img src="IMAGE/RY.png" class="falling-logo" style="left: 30%; animation-delay: 2s; width: 60px;">
+        <img src="IMAGE/RY.png" class="falling-logo" style="left: 50%; animation-delay: 4s; width: 100px;">
+        <img src="IMAGE/RY.png" class="falling-logo" style="left: 70%; animation-delay: 1s; width: 70px;">
+        <img src="IMAGE/RY.png" class="falling-logo" style="left: 90%; animation-delay: 3s; width: 90px;">
+    </div>
+
+    <div class="container">
+        
+        <div class="top-nav">
+            <div class="social-links">
+                <a href="https://www.youtube.com/@RYOD-X66" target="_blank" class="yt" data-color="#ff0000"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.instagram.com/ryod_x66/" target="_blank" class="ig" data-color="#e1306c"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@ryod.x66" target="_blank" class="tk" data-color="#00f2ea"><i class="fab fa-tiktok"></i></a>
+                <a href="https://discord.gg/nW24MPPw3s" target="_blank" class="ds" data-color="#5865f2"><i class="fab fa-discord"></i></a>
+            </div>
+            
+            <div class="nav-right">
+                <div class="lang-selector">
+                    <button class="lang-btn"><i class="fas fa-globe"></i></button>
+                    <div class="lang-dropdown">
+                        <div onclick="changeLang('ar')">ARABIC</div>
+                        <div onclick="changeLang('en')">ENGLISH</div>
+                        <div onclick="changeLang('es')">ESPAÑOL</div>
+                        <div onclick="changeLang('de')">DEUTSCH</div>
+                    </div>
+                </div>
+                <div class="payment-trigger" onclick="openPaymentOverlay()">
+                    <i class="fas fa-wallet"></i> <span data-i18n="pay_trigger">طُرق الدفع / PAY METHODS</span>
+                </div>
+            </div>
+        </div>
+        
+        <header>
+            <h1>RYOD X66</h1>
+        </header>
+
+        <section class="panels-grid">
+            <!-- DEVO FFX -->
+            <div class="card reveal">
+                <img src="IMAGE/devo.png" class="card-img">
+                <h3 class="card-title">Free Fire Beta</h3>
+                <a href="javascript:void(0)" class="btn-buy" onclick="selectItem('INERNAL')" data-i18n="btn_buy">BUY ACCESS</a>
+            </div>
+
+            <!-- RYOD X66 -->
+            <div class="card reveal">
+                <img src="IMAGE/h4x.png" class="card-img">
+                <h3 class="card-title">Free Fire Normal</h3>
+                <a href="javascript:void(0)" class="btn-buy" onclick="selectItem('EXTERNAL')" data-i18n="btn_buy">BUY ACCESS</a>
+            </div>
+        </section>
+
+        <div class="info-section reveal">
+            <h2 data-i18n="info_title">اختر لوحتك، اشترك في القناة وسيتم فتح التحميل 🔥<br>تحديثات جديدة كل يومين.</h2>
+            <p data-i18n="info_p">Subscribe to Unlock • Auto Updates every 48H</p>
+        </div>
+
+        <footer>
+            <span data-i18n="footer">DESIGNED FOR THE ELITE | RYOD X66 &copy; 2026</span>
+        </footer>
+    </div>
+
+    <!-- Selection Overlay (New Page Feel) -->
+    <div id="selection-overlay" class="selection-overlay" style="display: none;">
+        <div class="overlay-content">
+            <div class="back-btn" onclick="closeOverlay()">
+                <span data-i18n="btn_home">HOME</span> <i class="fas fa-arrow-right"></i>
+            </div>
+            <div class="payment-title">
+                <h2 id="overlay-title">RYOD X66</h2>
+                <p style="opacity: 0.5;" data-i18n="overlay_choose">Choose Your Edition</p>
+            </div>
+            <div class="plans-grid-inner">
+                <!-- Card 1 -->
+                <div id="plan-card-1" class="plan-card">
+                    <img src="IMAGE/h4x.png" class="plan-img">
+                    <h3>PANEL C++</h3>
+                    <button class="btn-plan" onclick="finishSelection('Normal')" data-i18n="btn_download">DOWNLOAD</button>
+                </div>
+                <!-- Card 2 -->
+                <div id="plan-card-2" class="plan-card">
+                    <img src="IMAGE/h4x.png" class="plan-img">
+                    <h3>PANEL C#</h3>
+                    <button class="btn-plan" onclick="finishSelection('MAX')" data-i18n="btn_download">DOWNLOAD</button>
+                </div>
+            </div>
+            
+            <div class="social-links-overlay">
+                <a href="https://www.youtube.com/@RYOD-X66" target="_blank" class="yt" data-color="#ff0000"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.instagram.com/ryod_x66/" target="_blank" class="ig" data-color="#e1306c"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@ryod.x66" target="_blank" class="tk" data-color="#00f2ea"><i class="fab fa-tiktok"></i></a>
+                <a href="https://discord.gg/nW24MPPw3s" target="_blank" class="ds" data-color="#5865f2"><i class="fab fa-discord"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Overlay (New Page Feel) -->
+    <div id="payment-overlay" class="selection-overlay" style="display: none;">
+        <div class="overlay-content">
+            <div class="back-btn" onclick="closePaymentOverlay()">
+                <span data-i18n="btn_home">HOME</span> <i class="fas fa-arrow-right"></i>
+            </div>
+            
+            <section id="payment" class="payment-box" style="margin-top: 20px;">
+                <div class="payment-title">
+                    <h2 data-i18n="pay_title">بوابة الدفع الرسمية</h2>
+                    <p style="opacity: 0.5; margin-bottom: 15px;" data-i18n="pay_p">اختر طريقة الدفع المناسبة لك لبدء عملية الشحن التلقائي</p>
+                </div>
+
+                <div class="methods">
+                    <div class="method active" data-id="paypal">
+                        <div class="method-label">
+                            <i class="fab fa-paypal" style="color: #0070ba;"></i>
+                            <span>PayPal</span>
+                        </div>
+                        <img src="https://img.icons8.com/color/48/000000/paypal.png">
+                    </div>
+                    <div class="method" data-id="card">
+                        <div class="method-label">
+                            <i class="fas fa-credit-card" style="color: #fff;"></i>
+                            <span data-i18n="pay_card">بطاقة بنكية / Debit Card</span>
+                        </div>
+                        <div style="display: flex; gap: 5px;">
+                            <img src="https://img.icons8.com/color/48/000000/visa.png" style="width: 24px;">
+                            <img src="https://img.icons8.com/color/48/000000/mastercard.png" style="width: 24px;">
+                        </div>
+                    </div>
+                    <div class="method" data-id="cashplus">
+                        <div class="method-label">
+                            <i class="fas fa-money-bill-wave" style="color: #00ff88;"></i>
+                            <span>Cash Plus</span>
+                        </div>
+                        <img src="IMAGE/Cash-Plus.png">
+                    </div>
+                </div>
+
+                <div id="details-area" class="details-area" style="display: block;">
+                    <p id="payment-msg" style="margin-bottom: 20px; font-weight: 500;" data-i18n="pay_safe">Payment is automatic and fully secure</p>
+                    <div class="email" style="font-family: monospace; font-size: 1.2rem; margin-bottom: 25px;">Email: mdlufey@gmail.com</div>
+                    <div id="paypal-button-container" style="max-width: 400px; margin: 0 auto;"></div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Script Entry -->
+    <script src="js/script.js"></script>
+    <script>
+        const translations = {
+            ar: {
+                pay_trigger: "طرق الدفع",
+                btn_buy: "انقر هنا",
+                info_title: "اختر لوحتك، اشترك في القناة وسيتم فتح التحميل 🔥<br>تحديثات جديدة كل يومين.",
+                info_p: "اشترك لفتح التحميل • تحديثات تلقائية كل 48 ساعة",
+                footer: "تم التصميم للنخبة | RYOD X66 &copy; 2026",
+                btn_home: "الرئيسية",
+                overlay_choose: "اختر إصدارك",
+                btn_download: "تحميل",
+                pay_title: "بوابة الدفع الرسمية",
+                pay_p: "اختر طريقة الدفع المناسبة لك لبدء عملية الشحن التلقائي",
+                pay_card: "بطاقة بنكية (فيزا / ماستركارد)",
+                pay_safe: "الدفع تلقائي وآمن بالكامل",
+                ver_msg: "الدفع لنسخة "
+            },
+            en: {
+                pay_trigger: "PAYMENT METHODS",
+                btn_buy: "Click here",
+                info_title: "Choose your panel, subscribe and download will unlock 🔥<br>New updates every 48 hours.",
+                info_p: "Subscribe to Unlock • Auto Updates every 48H",
+                footer: "DESIGNED FOR THE ELITE | RYOD X66 &copy; 2026",
+                btn_home: "HOME",
+                overlay_choose: "Choose Your Edition",
+                btn_download: "DOWNLOAD",
+                pay_title: "Official Payment Gateway",
+                pay_p: "Choose your preferred payment method to start automatic top-up",
+                pay_card: "Credit / Debit Card",
+                pay_safe: "Payment is automatic and fully secure",
+                ver_msg: "Payment for "
+            },
+            es: {
+                pay_trigger: "MÉTODOS DE PAGO",
+                btn_buy: "Click aquí",
+                info_title: "Elige tu panel, suscríbete y la descarga se desbloqueará 🔥<br>Nuevas actualizaciones cada 48h.",
+                info_p: "Suscríbete para desbloquear • Actualizaciones automáticas",
+                footer: "DISEÑADO PARA LA ELITE | RYOD X66 &copy; 2026",
+                btn_home: "INICIO",
+                overlay_choose: "Elige tu edición",
+                btn_download: "DESCARGAR",
+                pay_title: "Pasarela de Pago Oficial",
+                pay_p: "Elige tu método de pago preferido para iniciar la carga automática",
+                pay_card: "Tarjeta de Crédito / Débito",
+                pay_safe: "El pago es automático y totalmente seguro",
+                ver_msg: "Pago por "
+            },
+            de: {
+                pay_trigger: "ZAHLUNGSMETHODEN",
+                btn_buy: "Hier klicken",
+                info_title: "Wählen Sie Ihr Panel, abonnieren Sie es und der Download wird freigeschaltet 🔥<br>Alle 48 Stunden neue Updates.",
+                info_p: "Abonnieren zum Freischalten • Auto-Updates",
+                footer: "DESIGNED FOR THE ELITE | RYOD X66 &copy; 2026",
+                btn_home: "STARTSEITE",
+                overlay_choose: "Wählen Sie Ihre Edition",
+                btn_download: "HERUNTERLADEN",
+                pay_title: "Offizielles Zahlungsportal",
+                pay_p: "Wählen Sie Ihre bevorzugte Zahlungsmethode für die automatische Aufladung",
+                pay_card: "Kredit- / Debitkarte",
+                pay_safe: "Die Zahlung erfolgt automatisch und absolut sicher",
+                ver_msg: "Zahlung für "
+            }
+        };
+
+        let currentLang = 'en';
+
+        // Auto-init English on load
+        window.addEventListener('DOMContentLoaded', () => {
+            changeLang('en');
+        });
+
+        function changeLang(lang) {
+            currentLang = lang;
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            
+            const isRtl = (lang === 'ar');
+            document.dir = isRtl ? 'rtl' : 'ltr';
+            document.documentElement.setAttribute('dir', isRtl ? 'rtl' : 'ltr');
+            
+            // Update back buttons icons and order
+            document.querySelectorAll('.back-btn').forEach(btn => {
+                if (isRtl) {
+                    btn.innerHTML = `<span data-i18n="btn_home">${translations[lang].btn_home}</span> <i class="fas fa-arrow-right"></i>`;
+                } else {
+                    btn.innerHTML = `<i class="fas fa-arrow-left"></i> <span data-i18n="btn_home">${translations[lang].btn_home}</span>`;
+                }
+            });
+
+            document.querySelector('.lang-dropdown').style.display = 'none';
+        }
+
+        // Toggle dropdown
+        document.querySelector('.lang-btn').addEventListener('click', (e) => {
+            e.stopPropagation();
+            const dropdown = document.querySelector('.lang-dropdown');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        });
+
+        document.addEventListener('click', () => {
+            document.querySelector('.lang-dropdown').style.display = 'none';
+        });
+
+        function selectItem(name) {
+            document.getElementById('overlay-title').innerText = name;
+            const card1 = document.getElementById('plan-card-1');
+            const card2 = document.getElementById('plan-card-2');
+            
+            if (name === 'EXTERNAL') {
+                card2.style.display = 'none';
+                card1.style.gridColumn = '1 / -1'; // Center it
+            } else {
+                card2.style.display = 'block';
+                card1.style.gridColumn = 'auto';
+            }
+
+            document.getElementById('selection-overlay').style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Lock scroll
+            document.body.classList.add('overlay-open');
+            gsap.fromTo('#selection-overlay .overlay-content', { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.4, ease: 'back.out(1.7)' });
+        }
+
+        function closeOverlay() {
+            gsap.to('#selection-overlay .overlay-content', { opacity: 0, scale: 0.9, duration: 0.3, onComplete: () => {
+                document.getElementById('selection-overlay').style.display = 'none';
+                document.body.style.overflow = 'auto'; // Restore scroll
+                document.body.classList.remove('overlay-open');
+            }});
+        }
+
+        function openPaymentOverlay() {
+            document.getElementById('payment-overlay').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            document.body.classList.add('overlay-open');
+            if (window.renderPaypal) window.renderPaypal('paypal'); // Refresh button
+            gsap.fromTo('#payment-overlay .overlay-content', { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.4, ease: 'back.out(1.7)' });
+        }
+
+        function closePaymentOverlay() {
+            gsap.to('#payment-overlay .overlay-content', { opacity: 0, scale: 0.9, duration: 0.3, onComplete: () => {
+                document.getElementById('payment-overlay').style.display = 'none';
+                document.body.style.overflow = 'auto';
+                document.body.classList.remove('overlay-open');
+            }});
+        }
+
+        function finishSelection(version) {
+            closeOverlay();
+            // Open payment overlay after selection
+            setTimeout(() => {
+                openPaymentOverlay();
+                const msg = translations[currentLang].ver_msg || "الدفع لنسخة ";
+                document.getElementById('payment-msg').innerText = msg + version;
+            }, 500);
+        }
+    </script>
+</body>
+</html>
