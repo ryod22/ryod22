@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RYOD X66</title>
+    <title>Just Jina</title>
     <link rel="shortcut icon" href="IMAGE/RY.png">
     
     <!-- Fonts -->
@@ -56,7 +56,7 @@
         </div>
         
         <header>
-            <h1>RYOD X66</h1>
+            <h1>Just Jina</h1>
         </header>
 
         <section class="panels-grid">
@@ -67,7 +67,7 @@
                 <a href="javascript:void(0)" class="btn-buy" onclick="selectItem('INERNAL')" data-i18n="btn_buy">BUY ACCESS</a>
             </div>
 
-            <!-- RYOD X66 -->
+            <!-- Just Jina -->
             <div class="card reveal">
                 <img src="IMAGE/h4x.png" class="card-img">
                 <h3 class="card-title">Free Fire Normal</h3>
@@ -81,7 +81,7 @@
         </div>
 
         <footer>
-            <span data-i18n="footer">DESIGNED FOR THE ELITE | RYOD X66 &copy; 2026</span>
+            <span data-i18n="footer">DESIGNED FOR THE ELITE | Just Jina &copy; 2026</span>
         </footer>
     </div>
 
@@ -92,7 +92,7 @@
                 <span data-i18n="btn_home">HOME</span> <i class="fas fa-arrow-right"></i>
             </div>
             <div class="payment-title">
-                <h2 id="overlay-title">RYOD X66</h2>
+                <h2 id="overlay-title">Just Jina</h2>
                 <p style="opacity: 0.5;" data-i18n="overlay_choose">Choose Your Edition</p>
             </div>
             <div class="plans-grid-inner">
@@ -100,13 +100,13 @@
                 <div id="plan-card-1" class="plan-card">
                     <img src="IMAGE/h4x.png" class="plan-img">
                     <h3>PANEL C++</h3>
-                    <button class="btn-plan" onclick="finishSelection('Normal')" data-i18n="btn_download">DOWNLOAD</button>
+                    <button class="btn-plan" onclick="finishSelection('Normal', 'https://www.mediafire.com/file/kcowg8u7uxu3sz7/Just+Jina+Beta+C++.rar/file')" data-i18n="btn_download">DOWNLOAD</button>
                 </div>
                 <!-- Card 2 -->
                 <div id="plan-card-2" class="plan-card">
                     <img src="IMAGE/h4x.png" class="plan-img">
                     <h3>PANEL C#</h3>
-                    <button class="btn-plan" onclick="finishSelection('MAX')" data-i18n="btn_download">DOWNLOAD</button>
+                    <button class="btn-plan" onclick="finishSelection('MAX', 'https://www.mediafire.com/file/9nqlgvlkco0mdek/Just+Jina+Normal+C#.rar/file')" data-i18n="btn_download">DOWNLOAD</button>
                 </div>
             </div>
             
@@ -177,7 +177,7 @@
                 btn_buy: "انقر هنا",
                 info_title: "اختر لوحتك، اشترك في القناة وسيتم فتح التحميل 🔥<br>تحديثات جديدة كل يومين.",
                 info_p: "اشترك لفتح التحميل • تحديثات تلقائية كل 48 ساعة",
-                footer: "تم التصميم للنخبة | RYOD X66 &copy; 2026",
+                footer: "تم التصميم للنخبة | Just Jina &copy; 2026",
                 btn_home: "الرئيسية",
                 overlay_choose: "اختر إصدارك",
                 btn_download: "تحميل",
@@ -192,7 +192,7 @@
                 btn_buy: "Click here",
                 info_title: "Choose your panel, subscribe and download will unlock 🔥<br>New updates every 48 hours.",
                 info_p: "Subscribe to Unlock • Auto Updates every 48H",
-                footer: "DESIGNED FOR THE ELITE | RYOD X66 &copy; 2026",
+                footer: "DESIGNED FOR THE ELITE | Just Jina &copy; 2026",
                 btn_home: "HOME",
                 overlay_choose: "Choose Your Edition",
                 btn_download: "DOWNLOAD",
@@ -207,7 +207,7 @@
                 btn_buy: "Click aquí",
                 info_title: "Elige tu panel, suscríbete y la descarga se desbloqueará 🔥<br>Nuevas actualizaciones cada 48h.",
                 info_p: "Suscríbete para desbloquear • Actualizaciones automáticas",
-                footer: "DISEÑADO PARA LA ELITE | RYOD X66 &copy; 2026",
+                footer: "DISEÑADO PARA LA ELITE | Just Jina &copy; 2026",
                 btn_home: "INICIO",
                 overlay_choose: "Elige tu edición",
                 btn_download: "DESCARGAR",
@@ -222,7 +222,7 @@
                 btn_buy: "Hier klicken",
                 info_title: "Wählen Sie Ihr Panel, abonnieren Sie es und der Download wird freigeschaltet 🔥<br>Alle 48 Stunden neue Updates.",
                 info_p: "Abonnieren zum Freischalten • Auto-Updates",
-                footer: "DESIGNED FOR THE ELITE | RYOD X66 &copy; 2026",
+                footer: "DESIGNED FOR THE ELITE | Just Jina &copy; 2026",
                 btn_home: "STARTSEITE",
                 overlay_choose: "Wählen Sie Ihre Edition",
                 btn_download: "HERUNTERLADEN",
@@ -277,17 +277,36 @@
             document.querySelector('.lang-dropdown').style.display = 'none';
         });
 
+        const planData = {
+            'INERNAL': [
+                { title: 'PANEL C++', version: 'Normal', link: 'https://www.mediafire.com/file/kcowg8u7uxu3sz7/Just+Jina+Beta+C++.rar/file' },
+                { title: 'PANEL C#', version: 'MAX', link: 'https://www.mediafire.com/file/9nqlgvlkco0mdek/Just+Jina+Normal+C#.rar/file' }
+            ],
+            'EXTERNAL': [
+                { title: 'PANEL C++', version: 'Normal', link: 'https://www.mediafire.com/file/rhlbvscgfdmj3nm/Just+Jina+Normal+C++.rar/file' }
+            ]
+        };
+
         function selectItem(name) {
             document.getElementById('overlay-title').innerText = name;
             const card1 = document.getElementById('plan-card-1');
             const card2 = document.getElementById('plan-card-2');
             
-            if (name === 'EXTERNAL') {
+            const data = planData[name] || planData['INERNAL'];
+            
+            // Update Card 1
+            card1.querySelector('h3').innerText = data[0].title;
+            card1.querySelector('button').onclick = () => finishSelection(data[0].version, data[0].link);
+            
+            if (data.length < 2) {
                 card2.style.display = 'none';
-                card1.style.gridColumn = '1 / -1'; // Center it
+                card1.style.gridColumn = '1 / -1'; 
             } else {
                 card2.style.display = 'block';
                 card1.style.gridColumn = 'auto';
+                // Update Card 2
+                card2.querySelector('h3').innerText = data[1].title;
+                card2.querySelector('button').onclick = () => finishSelection(data[1].version, data[1].link);
             }
 
             document.getElementById('selection-overlay').style.display = 'flex';
@@ -320,14 +339,17 @@
             }});
         }
 
-        function finishSelection(version) {
-            closeOverlay();
-            // Open payment overlay after selection
-            setTimeout(() => {
-                openPaymentOverlay();
-                const msg = translations[currentLang].ver_msg || "الدفع لنسخة ";
-                document.getElementById('payment-msg').innerText = msg + version;
-            }, 500);
+        function finishSelection(version, link) {
+            // Open link in new tab without closing current overlay
+            if (link) {
+                window.open(link, '_blank');
+            }
+            
+            // Just show a small notification or update text instead of forcing payment overlay
+            const btn = event.target;
+            const originalText = btn.innerText;
+            btn.innerText = "OPENED!";
+            setTimeout(() => btn.innerText = originalText, 2000);
         }
     </script>
 </body>
