@@ -15,6 +15,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
+    <!-- Protection Script -->
+    <style>
+        body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+    <script>
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'F12' || e.keyCode === 123) e.preventDefault();
+            if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) e.preventDefault();
+            if (e.ctrlKey && (e.key === 'U' || e.key === 'u')) e.preventDefault();
+        });
+    </script>
 </head>
 <body>
 
@@ -50,7 +67,7 @@
                     </div>
                 </div>
                 <div class="payment-trigger" onclick="openPaymentOverlay()">
-                    <i class="fas fa-wallet"></i> <span data-i18n="pay_trigger">طُرق الدفع / PAY METHODS</span>
+                    <i class="fas fa-tools"></i> <span data-i18n="pay_trigger">الأدوات والتحميلات / TOOLS & DOWNLOADS</span>
                 </div>
             </div>
         </div>
@@ -63,14 +80,14 @@
             <!-- DEVO FFX -->
             <div class="card reveal">
                 <img src="IMAGE/devo.png" class="card-img">
-                <h3 class="card-title">Free Fire Beta</h3>
-                <a href="javascript:void(0)" class="btn-buy" onclick="selectItem('INERNAL')" data-i18n="btn_buy">BUY ACCESS</a>
+                <h3 class="card-title">Free Fire Normal</h3>
+                <a href="javascript:void(0)" class="btn-buy" onclick="selectItem('INTERNAL')" data-i18n="btn_buy">BUY ACCESS</a>
             </div>
 
             <!-- Just Jina -->
             <div class="card reveal">
                 <img src="IMAGE/h4x.png" class="card-img">
-                <h3 class="card-title">Free Fire Normal</h3>
+                <h3 class="card-title">Free Fire Beta</h3>
                 <a href="javascript:void(0)" class="btn-buy" onclick="selectItem('EXTERNAL')" data-i18n="btn_buy">BUY ACCESS</a>
             </div>
         </section>
@@ -98,15 +115,16 @@
             <div class="plans-grid-inner">
                 <!-- Card 1 -->
                 <div id="plan-card-1" class="plan-card">
-                    <img src="IMAGE/h4x.png" class="plan-img">
+                    <img src="IMAGE/panel c++ normal.png" class="plan-img">
+ 
                     <h3>PANEL C++</h3>
-                    <button class="btn-plan" onclick="finishSelection('Normal', 'https://www.mediafire.com/file/auqbgntm922jt0a/Just+Jina+Normal+C++.rar/file')" data-i18n="btn_download">DOWNLOAD</button>
+                    <button class="btn-plan" onclick="finishSelection('Normal', 'https://www.mediafire.com/file/auqbgntm922jt0a/Just_Jina_Normal_C%252B%252B.rar/file')" data-i18n="btn_download">DOWNLOAD</button>
                 </div>
                 <!-- Card 2 -->
                 <div id="plan-card-2" class="plan-card">
-                    <img src="IMAGE/h4x.png" class="plan-img">
+                    <img src="IMAGE/panel normal c#.png" class="plan-img">
                     <h3>PANEL C#</h3>
-                    <button class="btn-plan" onclick="finishSelection('MAX', 'https://www.mediafire.com/file/2rgz9unrbnb7253/Just+Jina+Normal+C#.rar/file')" data-i18n="btn_download">DOWNLOAD</button>
+                    <button class="btn-plan" onclick="finishSelection('MAX', 'https://www.mediafire.com/file/2rgz9unrbnb7253/Just_Jina_Normal_C%2523.rar/file')" data-i18n="btn_download">DOWNLOAD</button>
                 </div>
             </div>
             
@@ -126,45 +144,66 @@
                 <span data-i18n="btn_home">HOME</span> <i class="fas fa-arrow-right"></i>
             </div>
             
-            <section id="payment" class="payment-box" style="margin-top: 20px;">
-                <div class="payment-title">
-                    <h2 data-i18n="pay_title">بوابة الدفع الرسمية</h2>
-                    <p style="opacity: 0.5; margin-bottom: 15px;" data-i18n="pay_p">اختر طريقة الدفع المناسبة لك لبدء عملية الشحن التلقائي</p>
+            <div class="payment-title" style="margin-top: 30px;">
+                <h2 data-i18n="pay_title">الأدوات والتحميلات</h2>
+                <p style="opacity: 0.5;" data-i18n="pay_p">Tools & Downloads Center</p>
+            </div>
+
+            <div class="overlay-grid">
+                <div class="grid-header">EMULATOR</div>
+                <!-- Row 1 -->
+                <div class="plan-card">
+                    <img src="IMAGE/BluehhStacks.png" class="plan-img">
+                    <h3>MSI 5.12</h3>
+                    <a href="https://www.mediafire.com/file/1hzjo812gtgm64z/MSI+APP+Player.exe/file" class="btn-plan" target="_blank">CLICK HERE</a>
+                </div>
+                <div class="plan-card">
+                    <img src="IMAGE/BlueStacks.png" class="plan-img">
+                    <h3>Blu 5.22</h3>
+                    <a href="https://www.mediafire.com/file/2kjhzg1b1inhtsq/BlueStacksInstaller_5.22.125.1001_native_7c111521a7c76b76b5ace000e0567f1f_MzsxNSwwOzUsMTsxNSw0OzE1LDU7MTU%3D_(1).exe/file" class="btn-plan" target="_blank">CLICK HERE</a>
+                </div>
+                <div class="plan-card">
+                    <img src="IMAGE/vpn.png" class="plan-img">
+                    <h3>VPN INDIA</h3>
+                    <a href="https://drive.google.com/file/d/1kTiYH70j-Mrb4y1emVYfOYuEv9Vj_qMJ/view" class="btn-plan" target="_blank">CLICK HERE</a>
                 </div>
 
-                <div class="methods">
-                    <div class="method active" data-id="paypal">
-                        <div class="method-label">
-                            <i class="fab fa-paypal" style="color: #0070ba;"></i>
-                            <span>PayPal</span>
-                        </div>
-                        <img src="https://img.icons8.com/color/48/000000/paypal.png">
-                    </div>
-                    <div class="method" data-id="card">
-                        <div class="method-label">
-                            <i class="fas fa-credit-card" style="color: #fff;"></i>
-                            <span data-i18n="pay_card">بطاقة بنكية / Debit Card</span>
-                        </div>
-                        <div style="display: flex; gap: 5px;">
-                            <img src="https://img.icons8.com/color/48/000000/visa.png" style="width: 24px;">
-                            <img src="https://img.icons8.com/color/48/000000/mastercard.png" style="width: 24px;">
-                        </div>
-                    </div>
-                    <div class="method" data-id="cashplus">
-                        <div class="method-label">
-                            <i class="fas fa-money-bill-wave" style="color: #00ff88;"></i>
-                            <span>Cash Plus</span>
-                        </div>
-                        <img src="IMAGE/Cash-Plus.png">
-                    </div>
+                <div class="grid-header">FREE FIRE</div>
+                <!-- Row 2 -->
+                <div class="plan-card">
+                    <img src="IMAGE/images.jpg" class="plan-img">
+                    <h3>FF Normal</h3>
+                    <a href="https://www.mediafire.com/file/ggs2u8qjuw1759u/UPC+FF.xapk/file" class="btn-plan" target="_blank">CLICK HERE</a>
+                </div>
+                <div class="plan-card">
+                    <img src="IMAGE/devo.png" class="plan-img">
+                    <h3>FF BETA</h3>
+                    <a href="https://www.mediafire.com/file/uho0tjfh5tn67c0/Free+Fire+BETA+BY+CHEAT+OUSSAMA.xapk/file" class="btn-plan" target="_blank">CLICK HERE</a>
+                </div>
+                <div class="plan-card">
+                    <img src="IMAGE/h4x.png" class="plan-img">
+                    <h3>FF INDIA</h3>
+                    <a href="https://www.mediafire.com/file/hq0q9nbaoea9f5c/FF+INDIA+BY+CHEAT+OUSSAMA.xapk/file" class="btn-plan" target="_blank">CLICK HERE</a>
                 </div>
 
-                <div id="details-area" class="details-area" style="display: block;">
-                    <p id="payment-msg" style="margin-bottom: 20px; font-weight: 500;" data-i18n="pay_safe">Payment is automatic and fully secure</p>
-                    <div class="email" style="font-family: monospace; font-size: 1.2rem; margin-bottom: 25px;">Email: mdlufey@gmail.com</div>
-                    <div id="paypal-button-container" style="max-width: 400px; margin: 0 auto;"></div>
+                <div class="grid-header">DLLS</div>
+                <!-- Row 3 -->
+                <div class="plan-card">
+                    <img src="IMAGE/injector.png" class="plan-img">
+                    <h3>Extreme Injector v3</h3>
+                    <a href="#" class="btn-plan" target="_blank">CLICK HERE</a>
                 </div>
-            </section>
+                <div class="plan-card">
+                    <img src="IMAGE/BlueStjacks.png" class="plan-img">
+                    <h3>DRIVERS ++</h3>
+                    <a href="https://www.mediafire.com/file/375fqb3e4ue90mm/drivers_%2B.rar/file" class="btn-plan" target="_blank">CLICK HERE</a>
+                </div>
+                <div class="plan-card">
+                    <img src="IMAGE/BlueStjacks.png" class="plan-img">
+                    <h3>aio-runtimes_v2.5.0</h3>
+                    <a href="https://www.mediafire.com/file/7g682ynzljswigz/aio-runtimes_v2.5.0.rar/file%7C%7C" class="btn-plan" target="_blank">CLICK HERE</a>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -173,7 +212,7 @@
     <script>
         const translations = {
             ar: {
-                pay_trigger: "طرق الدفع",
+                pay_trigger: "الأدوات والتحميلات",
                 btn_buy: "انقر هنا",
                 info_title: "اختر لوحتك، اشترك في القناة وسيتم فتح التحميل 🔥<br>تحديثات جديدة كل يومين.",
                 info_p: "اشترك لفتح التحميل • تحديثات تلقائية كل 48 ساعة",
@@ -181,14 +220,14 @@
                 btn_home: "الرئيسية",
                 overlay_choose: "اختر إصدارك",
                 btn_download: "تحميل",
-                pay_title: "بوابة الدفع الرسمية",
-                pay_p: "اختر طريقة الدفع المناسبة لك لبدء عملية الشحن التلقائي",
+                pay_title: "الأدوات والتحميلات",
+                pay_p: "مركز تحميل الأدوات والبرامج",
                 pay_card: "بطاقة بنكية (فيزا / ماستركارد)",
                 pay_safe: "الدفع تلقائي وآمن بالكامل",
                 ver_msg: "الدفع لنسخة "
             },
             en: {
-                pay_trigger: "PAYMENT METHODS",
+                pay_trigger: "TOOLS & DOWNLOADS",
                 btn_buy: "Click here",
                 info_title: "Choose your panel, subscribe and download will unlock 🔥<br>New updates every 48 hours.",
                 info_p: "Subscribe to Unlock • Auto Updates every 48H",
@@ -196,8 +235,8 @@
                 btn_home: "HOME",
                 overlay_choose: "Choose Your Edition",
                 btn_download: "DOWNLOAD",
-                pay_title: "Official Payment Gateway",
-                pay_p: "Choose your preferred payment method to start automatic top-up",
+                pay_title: "Tools & Downloads",
+                pay_p: "Tools and Software Download Center",
                 pay_card: "Credit / Debit Card",
                 pay_safe: "Payment is automatic and fully secure",
                 ver_msg: "Payment for "
@@ -278,12 +317,13 @@
         });
 
         const planData = {
-            'INERNAL': [
-                { title: 'PANEL C++', version: 'Normal', link: 'https://www.mediafire.com/file/5zvac8iiy0lrhyh/Just+Jina+Beta+C++.rar/file' },
-                { title: 'PANEL C#', version: 'MAX', link: 'https://www.mediafire.com/file/9nqlgvlkco0mdek/Just+Jina+Normal+C#.rar/file' }
+            'INTERNAL': [
+                { title: 'PANEL C++', version: 'Normal', link: 'https://www.mediafire.com/file/auqbgntm922jt0a/Just_Jina_Normal_C%252B%252B.rar/file', img: 'IMAGE/panel beta c++.png' },
+                { title: 'PANEL C#', version: 'MAX', link: 'https://www.mediafire.com/file/2rgz9unrbnb7253/Just_Jina_Normal_C%2523.rar/file', img: 'IMAGE/just_jina_normal.png' }
             ],
             'EXTERNAL': [
-                { title: 'PANEL C++', version: 'Normal', link: 'https://www.mediafire.com/file/rhlbvscgfdmj3nm/Just+Jina+Normal+C++.rar/file' }
+                                { title: 'PANEL C++', version: 'Normal', link: 'https://www.mediafire.com/file/5zvac8iiy0lrhyh/Just_Jina_Beta_C%252B%252B.rar/file', img: 'IMAGE/just_jina_beta.png' },
+
             ]
         };
 
@@ -292,10 +332,11 @@
             const card1 = document.getElementById('plan-card-1');
             const card2 = document.getElementById('plan-card-2');
             
-            const data = planData[name] || planData['INERNAL'];
+            const data = planData[name] || planData['INTERNAL & EXTERNAL'];
             
             // Update Card 1
             card1.querySelector('h3').innerText = data[0].title;
+            card1.querySelector('.plan-img').src = data[0].img;
             card1.querySelector('button').onclick = () => finishSelection(data[0].version, data[0].link);
             
             if (data.length < 2) {
@@ -306,6 +347,7 @@
                 card1.style.gridColumn = 'auto';
                 // Update Card 2
                 card2.querySelector('h3').innerText = data[1].title;
+                card2.querySelector('.plan-img').src = data[1].img;
                 card2.querySelector('button').onclick = () => finishSelection(data[1].version, data[1].link);
             }
 
