@@ -34,7 +34,7 @@ function moveCursor() {
 moveCursor();
 
 // Hover Effects for Cursor
-const hoverElements = 'a, .method, .btn-buy, button';
+const hoverElements = 'a, .btn-plan, .btn-buy, button, .lang-dropdown div';
 document.querySelectorAll(hoverElements).forEach(el => {
     el.addEventListener('mouseenter', () => {
         cursor.classList.add('cursor-hover');
@@ -147,54 +147,5 @@ gsap.utils.toArray('.reveal').forEach(elem => {
         trigger: elem,
         start: 'top 85%',
         onEnter: () => gsap.to(elem, { opacity: 1, y: 0, duration: 1, ease: 'power4.out' })
-    });
-});
-
-// Payment Method Selection
-const methods = document.querySelectorAll('.method');
-const details = document.getElementById('details-area');
-const info = {
-    paypal: { msg: 'الدفع تلقائي عبر حساب باي بال', val: 'Email: mdlufey@gmail.com', show: true },
-    card: { msg: 'الدفع مباشرة عبر البطاقة البنكية (Visa/MasterCard)', val: '', show: true },
-    cashplus: { msg: 'تواصل معنا عبر الديسكورد للدفع عبر كاش بلوس', val: 'Discord: ryod_x66', show: false }
-};
-
-window.renderPaypal = function(id) {
-    const container = document.getElementById('paypal-button-container');
-    if (!container) return;
-    container.innerHTML = '';
-    if (!info[id].show || !window.paypal) return;
-
-    paypal.Buttons({
-        fundingSource: id === 'paypal' ? paypal.FUNDING.PAYPAL : paypal.FUNDING.CARD,
-        style: { 
-            layout: 'vertical', 
-            color: id === 'paypal' ? 'blue' : 'black', 
-            shape: 'rect',
-            label: id === 'paypal' ? 'paypal' : 'buynow'
-        },
-        createOrder: (data, actions) => actions.order.create({ purchase_units: [{ amount: { value: '25.00' } }] }),
-        onApprove: (data, actions) => actions.order.capture().then(d => alert('Success'))
-    }).render('#paypal-button-container');
-}
-
-// Initial render
-setTimeout(() => renderPaypal('paypal'), 1000);
-
-methods.forEach(m => {
-    m.addEventListener('click', () => {
-        methods.forEach(x => x.classList.remove('active'));
-        m.classList.add('active');
-        const id = m.getAttribute('data-id');
-        
-        gsap.to(details, { opacity: 0, duration: 0.2, onComplete: () => {
-            details.querySelector('p').innerText = info[id].msg;
-            const emailEl = details.querySelector('.email');
-            emailEl.innerText = info[id].val;
-            emailEl.style.display = info[id].val ? 'block' : 'none';
-            renderPaypal(id);
-            document.getElementById('paypal-button-container').style.display = info[id].show ? 'block' : 'none';
-            gsap.to(details, { opacity: 1, duration: 0.3 });
-        }});
     });
 });
