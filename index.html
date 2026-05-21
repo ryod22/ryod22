@@ -15,23 +15,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
-    <!-- Protection Script -->
-    <style>
-        body {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-    </style>
-    <script>
-        document.addEventListener('contextmenu', event => event.preventDefault());
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'F12' || e.keyCode === 123) e.preventDefault();
-            if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) e.preventDefault();
-            if (e.ctrlKey && (e.key === 'U' || e.key === 'u')) e.preventDefault();
-        });
-    </script>
 </head>
 <body>
 
@@ -77,17 +60,12 @@
         </header>
 
         <section class="panels-grid">
-            <!-- DEVO FFX -->
-            <div class="card reveal">
-                <img src="IMAGE/devo.png" class="card-img">
-                <h3 class="card-title">Free Fire Normal</h3>
-                <a href="javascript:void(0)" class="btn-buy" onclick="selectItem('INTERNAL')" data-i18n="btn_buy">BUY ACCESS</a>
-            </div>
+   
 
             <!-- Just Jina -->
             <div class="card reveal">
                 <img src="IMAGE/h4x.png" class="card-img">
-                <h3 class="card-title">Free Fire Beta</h3>
+                <h3 class="card-title">Free Fire Beta and India</h3>
                 <a href="javascript:void(0)" class="btn-buy" onclick="selectItem('EXTERNAL')" data-i18n="btn_buy">BUY ACCESS</a>
             </div>
         </section>
@@ -118,13 +96,13 @@
                     <img src="IMAGE/panel c++ normal.png" class="plan-img">
  
                     <h3>PANEL C++</h3>
-                    <button class="btn-plan" onclick="finishSelection('Normal', 'https://www.mediafire.com/file/auqbgntm922jt0a/Just_Jina_Normal_C%252B%252B.rar/file')" data-i18n="btn_download">DOWNLOAD</button>
+                    <button class="btn-plan" onclick="finishSelection('Normal', 'https://www.mediafire.com/file/hnz2341y2qhz1u2/Panels.rar/file')" data-i18n="btn_download">DOWNLOAD</button>
                 </div>
                 <!-- Card 2 -->
                 <div id="plan-card-2" class="plan-card">
                     <img src="IMAGE/panel normal c#.png" class="plan-img">
-                    <h3>PANEL C#</h3>
-                    <button class="btn-plan" onclick="finishSelection('MAX', 'https://www.mediafire.com/file/2rgz9unrbnb7253/Just_Jina_Normal_C%2523.rar/file')" data-i18n="btn_download">DOWNLOAD</button>
+                    <h3>PANEL C++</h3>
+                    <button class="btn-plan" onclick="finishSelection('MAX', 'https://www.mediafire.com/file/hnz2341y2qhz1u2/Panels.rar/file')" data-i18n="btn_download">DOWNLOAD</button>
                 </div>
             </div>
             
@@ -153,9 +131,9 @@
                 <div class="grid-header">EMULATOR</div>
                 <!-- Row 1 -->
                 <div class="plan-card">
-                    <img src="IMAGE/BluehhStacks.png" class="plan-img">
-                    <h3>MSI 5.12</h3>
-                    <a href="https://www.mediafire.com/file/1hzjo812gtgm64z/MSI+APP+Player.exe/file" class="btn-plan" target="_blank">CLICK HERE</a>
+                    <img src="IMAGE/injector.png" class="plan-img">
+                    <h3>Extreme Injector v3</h3>
+                    <a href="https://www.mediafire.com/file/e4m9h0rbe4vgg6s/Extreme+Injector+v3.rar/file" class="btn-plan" target="_blank">CLICK HERE</a>
                 </div>
                 <div class="plan-card">
                     <img src="IMAGE/BlueStacks.png" class="plan-img">
@@ -188,11 +166,14 @@
 
                 <div class="grid-header">DLLS</div>
                 <!-- Row 3 -->
-                <div class="plan-card">
-                    <img src="IMAGE/injector.png" class="plan-img">
-                    <h3>Extreme Injector v3</h3>
-                    <a href="#" class="btn-plan" target="_blank">CLICK HERE</a>
+
+
+                     <div class="plan-card">
+                    <img src="IMAGE/BlueStjacks.png" class="plan-img">
+                    <h3>driv+</h3>
+                    <a href="https://www.mediafire.com/file/1xl6ofwyx5g94r0/driv+.rar/file" class="btn-plan" target="_blank">CLICK HERE</a>
                 </div>
+          
                 <div class="plan-card">
                     <img src="IMAGE/BlueStjacks.png" class="plan-img">
                     <h3>DRIVERS ++</h3>
@@ -318,11 +299,11 @@
 
         const planData = {
             'INTERNAL': [
-                { title: 'PANEL C++', version: 'Normal', link: 'https://www.mediafire.com/file/auqbgntm922jt0a/Just_Jina_Normal_C%252B%252B.rar/file', img: 'IMAGE/panel beta c++.png' },
-                { title: 'PANEL C#', version: 'MAX', link: 'https://www.mediafire.com/file/2rgz9unrbnb7253/Just_Jina_Normal_C%2523.rar/file', img: 'IMAGE/just_jina_normal.png' }
+                { title: 'PANEL C++', version: 'Normal', link: 'https://www.mediafire.com/file/hnz2341y2qhz1u2/Panels.rar/file', img: 'IMAGE/panel beta c++.png' },
+                { title: 'PANEL C#', version: 'MAX', link: 'https://www.mediafire.com/file/9nqlgvlkco0mdek/Just+Jina+Normal+C#.rar/file', img: 'IMAGE/just_jina_normal.png' }
             ],
             'EXTERNAL': [
-                                { title: 'PANEL C++', version: 'Normal', link: 'https://www.mediafire.com/file/5zvac8iiy0lrhyh/Just_Jina_Beta_C%252B%252B.rar/file', img: 'IMAGE/just_jina_beta.png' },
+                                { title: 'PANEL C++', version: 'Normal', link: 'https://www.mediafire.com/file/hnz2341y2qhz1u2/Panels.rar/file', img: 'IMAGE/h4x.png' },
 
             ]
         };
