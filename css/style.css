@@ -75,6 +75,7 @@ body {
     width: 100%;
     height: 100%;
     z-index: -1;
+    pointer-events: none; /* Prevent blocking clicks and scrolls */
 }
 
 /* Falling Background Logos */
@@ -522,25 +523,33 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.95);
-    backdrop-filter: blur(15px);
+    background: rgba(5, 5, 5, 0.9); /* Dark background */
+    backdrop-filter: blur(10px);
     z-index: 10000;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 30px 20px; /* Reduced from 60px to move content up */
+    padding: 30px 20px;
     overflow-y: auto;
 }
 
+/* Make home background elements move inside the overlay */
+body.overlay-open #particles-canvas,
+body.overlay-open .bg-logos {
+    z-index: 10001;
+    pointer-events: none; /* Critical: allow scrolling underneath */
+}
+
 .overlay-content {
-    max-width: 720px; /* Reduced to align with two 350px cards + 20px gap */
+    max-width: 1100px; /* Increased from 720px to fit 3x3 grid */
     width: 100%;
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5px; /* Reduced to move cards up */
+    gap: 15px; /* Slightly increased gap */
+    z-index: 10002; /* Ensure content is above moving background */
 }
 
 .back-btn {
@@ -588,13 +597,59 @@ body:not(.overlay-open) .back-btn {
     width: 100%;
 }
 
+.overlay-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px; /* Reduced gap */
+    width: 100%;
+    margin-top: 20px;
+}
+
+.grid-header {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin: 30px 0 10px 0;
+    filter: drop-shadow(0 0 10px var(--primary-glow));
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.grid-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--primary), transparent);
+}
+
+@media (max-width: 1000px) {
+    .overlay-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 650px) {
+    .overlay-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 .plan-card {
-    max-width: 350px; /* Matched closer to main panel feel */
+    max-width: 320px; /* Slightly reduced width */
     width: 100%;
     background: rgba(10, 10, 15, 0.9);
     border: 1px solid rgba(112, 0, 255, 0.2);
     border-radius: 25px;
-    padding: 40px;
+    padding: 20px 25px; /* Reduced vertical padding */
     text-align: center;
     transition: all 0.4s;
 }
@@ -606,30 +661,30 @@ body:not(.overlay-open) .back-btn {
 }
 
 .plan-img {
-    width: 150px;
-    height: 150px;
+    width: 130px; /* Slightly reduced size */
+    height: 130px;
     object-fit: cover;
     border-radius: 15px;
-    margin-bottom: 25px;
+    margin-bottom: 15px; /* Reduced margin */
     box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
 }
 
 .plan-card h3 {
-    font-size: 1.4rem;
+    font-size: 1.2rem; /* Slightly reduced font size */
     font-weight: 900;
-    margin-bottom: 30px;
+    margin-bottom: 15px; /* Reduced margin */
     letter-spacing: 1px;
 }
 
 .btn-plan {
     width: 100%;
-    padding: 14px;
+    padding: 10px; /* Reduced from 14px */
     background: rgba(255, 0, 127, 0.1);
     border: 2px solid var(--primary);
     color: #fff;
     border-radius: 12px;
     font-weight: 900;
-    font-size: 1rem;
+    font-size: 0.9rem; /* Slightly smaller font */
     transition: all 0.3s;
     cursor: pointer;
     letter-spacing: 1px;
